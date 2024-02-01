@@ -8,7 +8,7 @@ const routes = (app: Express) => {
   );
 
   app.use("/", HomeRoutes)
-  
+  app.use('/products', ProductsRoutes);
 }
 
 export default routes;
