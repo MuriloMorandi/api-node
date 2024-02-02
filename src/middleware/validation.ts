@@ -1,14 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 
-
 export const validateResource = (schema: any) =>
     async (req: Request, res: Response, next: NextFunction) => {
         const resource = req.body;
         try {
-            await schema.validate(resource);
+            await schema.validate(resource, {
+                abortEarly: false,
+            });
             next();
         } catch (e:any)
         {
-            res.status(400).json({ error:e.errors.join(', ')});
+            const fieldsError = e.inner.map((err: any) => {
+                return { name: err.path, message:err.message };
+            });
+        
+            res.status(400).json({fields:fieldsError});
         }
     };
