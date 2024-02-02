@@ -11,7 +11,7 @@ export interface IProductsRepository{
 }
 
 
-export class DBProductsRepository implements IProductsRepository{
+export class ProductsRepository implements IProductsRepository{
 
     async save(data: IProduct): Promise<IProduct> {
         try

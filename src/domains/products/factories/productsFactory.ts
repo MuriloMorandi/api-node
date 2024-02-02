@@ -1,4 +1,4 @@
-import { DBProductsRepository } from "../../../repositories/IProductsRepository";
+import { ProductsRepository } from "../../../repositories/ProductsRepository";
 import { GetByIdProductsController } from "../controllers/getByIdProductsController";
 import { GetProductsController } from "../controllers/getProductsController";
 import { RegisterProductsController } from "../controllers/registerProductsController";
@@ -8,7 +8,7 @@ import { WriteProductsUseCase } from "../useCases/writeProductsUseCases";
 
 
 export const makeRegisterProductsController = () => {
-    const productsRepository = new DBProductsRepository();
+    const productsRepository = new ProductsRepository();
     const registerProductsUseCase = new WriteProductsUseCase(productsRepository);
     const registerProductsController = new RegisterProductsController(registerProductsUseCase);
 
@@ -16,7 +16,7 @@ export const makeRegisterProductsController = () => {
 }
 
 export const makeGetProductsController = () => {
-    const productsRepository = new DBProductsRepository();
+    const productsRepository = new ProductsRepository();
     const getProductsUseCase = new GetProductsUseCase(productsRepository);
     const getProductsController = new GetProductsController(getProductsUseCase);
 
@@ -24,7 +24,7 @@ export const makeGetProductsController = () => {
 }
 
 export const makeGetByIdProductsController = () => {
-    const productsRepository = new DBProductsRepository();
+    const productsRepository = new ProductsRepository();
     const getProductsUseCase = new GetProductsUseCase(productsRepository);
     const getByIdProductsController = new GetByIdProductsController(getProductsUseCase);
 
@@ -32,7 +32,7 @@ export const makeGetByIdProductsController = () => {
 }
 
 export const makeUpdateProductsController = () => {
-    const productsRepository = new DBProductsRepository();
+    const productsRepository = new ProductsRepository();
     const updateProductsUseCase = new WriteProductsUseCase(productsRepository);
     const updateProductsController = new UpdateProductsController(updateProductsUseCase);
 

@@ -1,4 +1,4 @@
-import { IProductsRepository } from "../../../repositories/IProductsRepository";
+import { IProductsRepository } from "../../../repositories/ProductsRepository";
 import { ProductDTO } from "../DTOs/productDTO";
 
 

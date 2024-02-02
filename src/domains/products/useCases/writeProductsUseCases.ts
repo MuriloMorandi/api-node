@@ -1,13 +1,13 @@
 import { ProductDTO } from '../DTOs/productDTO';
 import { InternalServerError } from "../../../exceptions/InternalServerError";
 import { IProduct } from "../../../interfaces/IProducts";
-import { IProductsRepository } from "../../../repositories/IProductsRepository";
-import { IRegisterProductsDTO } from "../validations/registerProductsDTO";
+import { IProductsRepository } from "../../../repositories/ProductsRepository";
+import { IRegisterProductsParams } from "../validations/registerProductsDTO";
 
 export class WriteProductsUseCase {
     constructor(private readonly productsRepository: IProductsRepository) { }
 
-    async Create(data: IRegisterProductsDTO) {
+    async Create(data: IRegisterProductsParams) {
         
         if (data.name == undefined || data.name == '')
         {
