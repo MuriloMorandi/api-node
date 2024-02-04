@@ -1,8 +1,15 @@
 import { Router } from 'express'
 import { adaptRoute } from '../../adapts/adaptRoute';
-import { makeGetByIdProductsController, makeGetProductsController, makeRegisterProductsController, makeUpdateProductsController } from './factories/productsFactory';
+import {
+    makeDeleteProductsController,
+    makeGetByIdProductsController,
+    makeGetProductsController,
+    makeRegisterProductsController,
+    makeUpdateProductsController
+} from './factories/productsFactory';
+
 import { validateResource } from '../../middleware/validation';
-import { registerProductsDTO } from './validations/registerProductsDTO';
+import { ProductsDTO } from './validations/registerProductsDTO';
 import { makeTokenMiddleware } from '../../middleware/tokenMiddleware';
 import { adaptMiddleware } from '../../adapts/adaptMiddleware';
 
@@ -10,7 +17,7 @@ const ProductsRoutes = Router();
 
 ProductsRoutes.post('/',
     adaptMiddleware(makeTokenMiddleware()),
-    validateResource(registerProductsDTO),
+    validateResource(ProductsDTO),
     adaptRoute(makeRegisterProductsController())
 );
 
@@ -25,7 +32,14 @@ ProductsRoutes.get('/:id',
 );
 
 ProductsRoutes.put('/:id',
-    adaptMiddleware(makeTokenMiddleware()), adaptRoute(makeUpdateProductsController())
+    adaptMiddleware(makeTokenMiddleware()),
+    validateResource(ProductsDTO),
+    adaptRoute(makeUpdateProductsController())
+);
+
+ProductsRoutes.delete('/:id',
+    adaptMiddleware(makeTokenMiddleware()),
+    adaptRoute(makeDeleteProductsController())
 );
 
 export {ProductsRoutes};

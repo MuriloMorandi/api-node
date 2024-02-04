@@ -7,7 +7,8 @@ export interface IProductsRepository{
     save: (data: IProduct) => Promise<IProduct>;
     getAll: () => Promise<IProduct[]>;
     getById(id: number): Promise<IProduct>;
-    update(id:number, data: IProduct): Promise<IProduct>;
+    update(id: number, data: IProduct): Promise<IProduct>;
+    delete(id: number): Promise<void>;
 }
 
 
@@ -99,5 +100,24 @@ export class ProductsRepository implements IProductsRepository{
         }
     }
 
+    async delete(id: number): Promise<void> {
+        try
+        {
+            await this.getById(id);
+
+            await sql`
+                DELETE FROM products WHERE id = ${id}
+            `;
+        }
+        catch (err)
+        {
+            if (err instanceof NotFoundException)
+            {
+                throw err;
+            }
+            
+            throw new InternalServerError('Error to delete product');
+        }
+    }
 
 }

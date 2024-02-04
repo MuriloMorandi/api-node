@@ -1,8 +1,10 @@
 import { ProductsRepository } from "../../../repositories/ProductsRepository";
+import { DeleteProductsController } from "../controllers/deleteProductsController";
 import { GetByIdProductsController } from "../controllers/getByIdProductsController";
 import { GetProductsController } from "../controllers/getProductsController";
 import { RegisterProductsController } from "../controllers/registerProductsController";
 import { UpdateProductsController } from "../controllers/updateProductsController";
+import { DeleteProductsUseCase } from "../useCases/deleteProductsUseCases";
 import { GetProductsUseCase } from "../useCases/readProductsUseCases";
 import { WriteProductsUseCase } from "../useCases/writeProductsUseCases";
 
@@ -37,4 +39,12 @@ export const makeUpdateProductsController = () => {
     const updateProductsController = new UpdateProductsController(updateProductsUseCase);
 
     return updateProductsController;
+}
+
+export const makeDeleteProductsController = () => {
+    const productsRepository = new ProductsRepository();
+    const deleteProductsUseCase = new DeleteProductsUseCase(productsRepository);
+    const deleteProductsController = new DeleteProductsController(deleteProductsUseCase);
+
+    return deleteProductsController;
 }

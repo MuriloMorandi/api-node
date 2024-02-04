@@ -1,13 +1,12 @@
 import { ProductDTO } from '../DTOs/productDTO';
 import { InternalServerError } from "../../../exceptions/InternalServerError";
-import { IProduct } from "../../../interfaces/IProducts";
 import { IProductsRepository } from "../../../repositories/ProductsRepository";
-import { IRegisterProductsParams } from "../validations/registerProductsDTO";
+import { IProductsParams } from "../validations/registerProductsDTO";
 
 export class WriteProductsUseCase {
     constructor(private readonly productsRepository: IProductsRepository) { }
 
-    async Create(data: IRegisterProductsParams) {
+    async Create(data: IProductsParams) {
         
         if (data.name == undefined || data.name == '')
         {
@@ -18,7 +17,7 @@ export class WriteProductsUseCase {
         return new ProductDTO(ret);       
     }
 
-    async Update(id:number, data: IProduct) { 
+    async Update(id:number, data: IProductsParams) { 
 
         const ret = await this.productsRepository.update(id, data);
 
