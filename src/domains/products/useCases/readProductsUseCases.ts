@@ -2,7 +2,7 @@ import { IProductsRepository } from "../../../repositories/ProductsRepository";
 import { ProductDTO } from "../DTOs/productDTO";
 
 
-export class GetProductsUseCase {
+export class ReadProductsUseCase {
     constructor(private readonly productsRepository: IProductsRepository) { }
 
     async Get() {

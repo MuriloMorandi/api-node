@@ -7,11 +7,6 @@ export class WriteProductsUseCase {
     constructor(private readonly productsRepository: IProductsRepository) { }
 
     async Create(data: IProductsParams) {
-        
-        if (data.name == undefined || data.name == '')
-        {
-            throw new InternalServerError('Name is required');    
-        }
         const ret = await this.productsRepository.save(data);
         
         return new ProductDTO(ret);       
