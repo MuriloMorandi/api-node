@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "nodemon server.ts ",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "lint": "eslint --ext .ts ."
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,13 @@
     "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20.11.10",
     "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "jest": "^29.7.0",
     "nodemon": "^3.0.3",
+    "prettier": "^3.2.5",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2"
