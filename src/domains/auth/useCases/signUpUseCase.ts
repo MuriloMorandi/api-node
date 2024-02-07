@@ -2,7 +2,7 @@ import { BadRequestException } from "../../../exceptions/BadRequestException";
 import { CryptoProvider } from "../../../infra/cryptography/CryptoProvider";
 import { JwtProvider } from "../../../infra/jwt/JWTProvider";
 import { UserRepository } from "../../../repositories/UserRepository";
-import { maskedCPF } from "../../../utils/maskedCPF";
+import { maskedCPF } from "../../../helpers/CPF";
 import { AuthUserDTO } from "../DTOs/authUserDTO";
 import { ISignUpParams } from "../validations/signUpDTO";
 

@@ -1,5 +1,5 @@
 import { IProduct } from "../../../interfaces/IProducts";
-import { CurrencyFormat } from "../../../utils/CurrencyFormat";
+import { CurrencyFormat } from "../../../helpers/CurrencyFormat";
 
 export class ProductDTO {
     public id: number;

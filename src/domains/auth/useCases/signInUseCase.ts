@@ -4,7 +4,7 @@ import { JwtProvider } from '../../../infra/jwt/JWTProvider';
 import { ISignInParams } from '../validations/signInDTO';
 import { BadRequestException } from '../../../exceptions/BadRequestException';
 import { AuthUserDTO } from '../DTOs/authUserDTO';
-import { maskedCPF } from '../../../utils/maskedCPF';
+import { maskedCPF } from '../../../helpers/CPF';
 
 export class SignInUseCase{
     constructor(
