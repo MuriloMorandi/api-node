@@ -1,16 +1,13 @@
-import express from 'express';
-import routes from './configs/routes';
-import { ErrorHandling } from './middleware/errorHandling';
-import { logResponseTime } from './middleware/logResponseTime';
+import express from 'express'
 
-const app = express();
+import routes from './configs/routes'
+import { ErrorHandling } from './middleware/errorHandling'
 
-if (process.env.ENV === 'development')
-{
-    app.use(logResponseTime);
-}
+import { setupMiddleware } from './configs/middleware'
+const app = express()
 
-routes(app);
+setupMiddleware(app)
+routes(app)
 app.use(ErrorHandling)
 
-export { app } 
+export { app }
